@@ -18,10 +18,10 @@ import com.bumptech.glide.Glide;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
-    private Context context;
+  private Context context;
     private List<Room> roomList;
-//    private int[] imageIds;
-//    private String[] description;
+  private int[] imageIds;
+    private String[] description;
 
 
     public RecyclerAdapter(Context context, List<Room> roomList) {
@@ -36,7 +36,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         View view = inflater.inflate(R.layout.customer_card, null);
 
 
-        return new ViewHolder((CardView) view);
+        return new RecyclerView.ViewHolder((CardView) view);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.textViewPriceByDay.setText(String.valueOf(room.getPriceByDay()));
 
 
-/*
+
         CardView cardView = holder.cardView;
         ImageView imageView = (ImageView) cardView.findViewById(R.id.image);
         Drawable dr = ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
@@ -60,8 +60,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView txt = (TextView)cardView.findViewById(R.id.txtName);
         txt.setText(description[position]);
 
- */
-//        cardView.setOnClickListener( new View.OnClickListener(){
+
+        cardView.setOnClickListener( new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v){
 //                //
@@ -91,4 +91,61 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
     }
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
 }
+   /* private String[] captions;
+    private int[] Capacity;
+
+    public RecyclerAdapter(List<Room> roomList){
+            this.captions = new String[roomList.size()];
+            this.Capacity = new int[roomList.size()];
+            for(int i = 0;i<roomList.size();i++){
+                captions[i]+=roomList.get(i).getImage();
+                Capacity[i]+=roomList.get(i).getCapacity();
+            }
+
+    }
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_card,
+                parent,
+                false);
+
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        CardView cardView = holder.cardView;
+        ImageView imageView = (ImageView) cardView.findViewById(R.id.image);
+        Drawable dr = ContextCompat.getDrawable(cardView.getContext(), Capacity[position]);
+        imageView.setImageDrawable(dr);
+        TextView txt = (TextView)cardView.findViewById(R.id.txtName);
+        txt.setText(captions[position]);
+        cardView.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return captions.length;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        private CardView cardView;
+        public ViewHolder(CardView cardView){
+            super(cardView);
+            this.cardView = cardView;
+        }
+
+    }*/
+

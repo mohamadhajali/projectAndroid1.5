@@ -36,7 +36,7 @@ import java.util.List;
 
 public class CustomerRecycler extends AppCompatActivity {
 
-    private static final String url = "http://192.168.1.113:80/mobileProject/getRoom.php";
+    private static final String url = "http://192.168.1.115:80/mobileProject/getRoom.php";
     List<Room> roomList;
     RecyclerView recycler;
 
@@ -97,7 +97,7 @@ public class CustomerRecycler extends AppCompatActivity {
                         JSONObject roomObject = rooms.getJSONObject(i);
 
                         roomList.add(new Room(
-                                roomObject.getInt("id"),
+                                roomObject.getInt("roomID"),
                                 roomObject.getInt("capacity"),
                                 roomObject.getInt("priceByDay"),
                                 roomObject.getString("image")
@@ -113,7 +113,8 @@ public class CustomerRecycler extends AppCompatActivity {
 
                          */
                     }
-                    RecyclerAdapter adapter = new RecyclerAdapter(CustomerRecycler.this, roomList);
+
+                    RecyclerAdapter adapter = new RecyclerAdapter(roomList);
                     recycler.setAdapter(adapter);
 
                 } catch (JSONException e) {
